@@ -5,12 +5,16 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @list = who_gets_who
   end
 
-  # def present
-  #   @event = Event.find(params[:event_id])
-  # end
+  def present
+    @event = Event.find(params[:event_id])
+    @list = who_gets_who
+    # @list.each do |key, value|
+    #   target = "#{value.first_name} #{value.last_name}"
+    #   EventMailer.secret_santa_confirmation(key, target).deliver_now
+    # end
+  end
 
   def new
     @event = Event.new
@@ -47,7 +51,7 @@ class EventsController < ApplicationController
       good_choice = check_the_same(couples)
       # p good_choice
     end
-    participants = Event.find(params[:id]).participants
+    participants = Event.find(params[:event_id]).participants
     pairs = {}
     couples.each do |key, value|
       pairs[participants[key]] = participants[value]
@@ -85,7 +89,7 @@ class EventsController < ApplicationController
   end
 
   def mixing_participants
-    event = Event.find(params[:id])
+    event = Event.find(params[:event_id])
     # p event.participants.length
     numbers = (0...event.participants.length).to_a
     # givers = event.participants
@@ -105,6 +109,8 @@ class EventsController < ApplicationController
 
   def check_the_same(couples)
     # puts couples
+    return true if couples.length <= 1
+
     couples.each do |key, value|
       return false if key == value
     end

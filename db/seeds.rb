@@ -17,7 +17,7 @@ puts "creating users..."
 
 user1 = User.create(first_name: 'Benjamin',
                     last_name: 'Boulle',
-                    email: 'benjaminboulle.sjb@gmail.com',
+                    email: 'benjaminboulle7@gmail.com',
                     password: 'azerty')
 
 puts "creating events..."
