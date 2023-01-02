@@ -43,62 +43,21 @@ class EventsController < ApplicationController
   def who_gets_who
     couples = mixing_participants
     good_choice = check_the_same(couples)
-    # p couples
-    # p good_choice
     until good_choice
       couples = mixing_participants
-      # p couples
       good_choice = check_the_same(couples)
-      # p good_choice
     end
     participants = Event.find(params[:event_id]).participants
     pairs = {}
     couples.each do |key, value|
       pairs[participants[key]] = participants[value]
     end
-    # event = Event.find(params[:id])
-    # givers = event.participants
-    # recievers = event.participants.shuffle
-    # givers.each do |element|
-    #   puts element.first_name
-    # end
-    # puts "little break"
-    # recievers.each do |element|
-    #   puts element.first_name
-    # end
-    # couples = {}
-    # givers.each do |giver|
-    #   reciever = recievers.sample
-    #   while giver == reciever
-    #     reciever = recievers.sample
-    #   end
-    #   couples[giver] = reciever
-    # end
-    # i = 1
-    # couples.each do |couple|
-    #   puts "couple number #{i}"
-    #   puts couple[0].first_name
-    #   puts couple[1].first_name
-    #   i += 1
-    # end
-    # puts 'these are the couples for your secret santa'
-    # pairs.each do |key, value|
-    #   puts "#{key.first_name} must offer a present to #{value.first_name}"
-    # end
     return pairs
   end
 
   def mixing_participants
     event = Event.find(params[:event_id])
-    # p event.participants.length
     numbers = (0...event.participants.length).to_a
-    # givers = event.participants
-    # recievers = event.participants.shuffle
-    # if givers == recievers
-    #   p "it's kinda working"
-    # else
-    #   p "it's also maybe working"
-    # end
     couples = {}
     numbers_shuffle = numbers.shuffle
     numbers.each_with_index do |number, index|
@@ -108,7 +67,6 @@ class EventsController < ApplicationController
   end
 
   def check_the_same(couples)
-    # puts couples
     return true if couples.length <= 1
 
     couples.each do |key, value|
