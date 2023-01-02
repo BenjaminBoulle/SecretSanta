@@ -5,18 +5,21 @@
 <h3>
   Participants
 </h3>
+<div>
+  <%= link_to  new_event_participant_path(@event) do %>
+    Add a participant
+    <i class="fa-solid fa-plus"></i>
+  <% end %>
+</div>
 <% @event.participants.each do |participant| %>
   <p>
     <%= participant.first_name%> <%= participant.last_name %> <%= participant.email %>
   </p>
 <% end %>
-<%= link_to  new_event_participant_path(@event) do %>
-  Add a participant
-  <i class="fa-solid fa-plus"></i>
-<% end %>
 
-<% @list.each do |key, value| %>
-  <p>
-    <%= key.first_name %> <%= key.last_name %> must offer a present to <%= value.first_name %> <%= value.last_name %>
-  </p>
-<% end %>
+
+<div>
+  <%= link_to  event_custom_path(@event) do %>
+    Take a look at the Secret Santa picks and send an email to let them know who they have picked!
+  <% end %>
+</div>

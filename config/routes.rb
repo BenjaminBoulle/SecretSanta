@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :participants, only: %i[new create]
+    get "all_participants", to: "events#present", as: "custom"
   end
-  # get "events/:event_id", to: "events#present", as: "present"
 end

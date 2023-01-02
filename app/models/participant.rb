@@ -1,6 +1,6 @@
 class Participant < ApplicationRecord
   belongs_to :event
 
-  validates :email, uniqueness: true, presence: true
-  validates :email, format: { with: /\A.*@.*\.com\z/ }
+  validates :email, presence: true
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
 end

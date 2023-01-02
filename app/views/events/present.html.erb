@@ -1,0 +1,9 @@
+<% if @list.length > 1 %>
+  <% @list.each do |key, value| %>
+    <p>
+      <%= key.first_name %> <%= key.last_name %> must offer a present to <%= value.first_name %> <%= value.last_name %>
+    </p>
+  <% end %>
+  <% else %>
+  <p>you need at least 2 participants to have a secret santa</p>
+<% end %>
