@@ -5,4 +5,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  resources :events do
+    resources :participants, only: %i[new create]
+  end
+  # get "events/:event_id", to: "events#present", as: "present"
 end

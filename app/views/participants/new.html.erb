@@ -1,0 +1,9 @@
+<h3>
+  add a participant to your event
+</h3>
+<%= simple_form_for [@event, @participant] do |f| %>
+  <%= f.input :first_name, placeholder: "first name", label: false %>
+  <%= f.input :last_name, placeholder: "last name", label: false %>
+  <%= f.input :email, placeholder: "email",label: false %>
+  <%= f.button :submit %>
+<% end %>
