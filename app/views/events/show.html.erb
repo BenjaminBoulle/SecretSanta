@@ -1,0 +1,22 @@
+<h1><%= @event.user.first_name %> <%= @event.user.last_name %>'s Event</h1>
+<h2>
+  <%= @event.title %>
+</h2>
+<h3>
+  Participants
+</h3>
+<% @event.participants.each do |participant| %>
+  <p>
+    <%= participant.first_name%> <%= participant.last_name %> <%= participant.email %>
+  </p>
+<% end %>
+<%= link_to  new_event_participant_path(@event) do %>
+  Add a participant
+  <i class="fa-solid fa-plus"></i>
+<% end %>
+
+<% @list.each do |key, value| %>
+  <p>
+    <%= key.first_name %> <%= key.last_name %> must offer a present to <%= value.first_name %> <%= value.last_name %>
+  </p>
+<% end %>

@@ -1,0 +1,13 @@
+<h1>My events</h1>
+<% @events.each do |event| %>
+  <div>
+    <%= link_to event_path(event) do %>
+      <%= event.title %>
+    <% end %>
+  </div>
+<% end  %>
+
+<%= link_to new_event_path do %>
+  Add an event
+  <i class="fa-solid fa-plus"></i>
+<% end %>
